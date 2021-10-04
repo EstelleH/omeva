@@ -1,0 +1,11 @@
+.jobs-teaser{
+    padding: 50px 0 20px;
+}
+.jobs-teaser h2.title,
+.jobs-teaser .cta{
+    text-align: center;
+}
+
+.jobs-teaser .cta{
+    padding-bottom: 20px;
+}

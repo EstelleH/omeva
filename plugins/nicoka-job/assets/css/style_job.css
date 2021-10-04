@@ -1,0 +1,317 @@
+.single_job_listing-menu li.job-back{
+    list-style: none !important;
+    display:block;
+}
+
+.single_job_listing-menu{
+    float:left;
+    margin:0 !important;
+    width:18%;
+    display:block;
+}
+.single_job_listing-menu ul{
+    margin:0 !important;
+}
+.single_job_listing-menu li.job-back a:hover {
+    text-decoration: none;
+    outline-color: initial;
+    outline-style: initial;
+    outline-width: 0px;
+}
+
+.single_job_listing-menu li.job-back a {
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    color:#fff !important;
+}
+.single_job_listing-menu li.job-back i {
+    margin-right:5px;
+}
+.single_job_listing-menu li.job-back a span{
+    background: #f1911f;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 15px 15px !important; 
+    margin-left:25px;
+    margin-right:auto;
+    position:relative;
+    color: #FFF;    
+    font-size: 16px;
+    font-family: "TradeGothicLT-Bold", Arial, Tahoma, sans-serif;
+}
+
+.single_job_listing form .form-content {
+    margin: 0 0 1em;
+    padding: .25em 0;
+}
+.single_job_listing{
+    width: 82%;
+    float:right;
+}
+.single_job_action{
+    width: 18%;
+    float:left;
+}
+.single_job_listing .job-block {
+    clear: both;
+}
+.single_job_listing .job-block .orange.bold {
+    font-size: 16px;
+    font-family: "TradeGothicLT-Bold", Arial, Tahoma, sans-serif;
+}
+.single_job_listing .job-duree, .single_job_listing .job-lieu {
+    font-size: 14px;
+    color: #577690;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    display: block;
+    float: left;
+}
+.single_job_listing form .form-content h3 {
+    line-height: 1.5em;
+    padding: 0;
+    font-size: 25px !important;
+    margin: 0 !important;
+    color: #2d4658;
+    font-family: "TradeGothicLT-Bold", Arial, Tahoma, sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.single_job_listing form .form-content h3:after {
+    display: block;
+    content: "";
+    background: #f1911f;
+    width: 46px;
+    height: 6px;
+    margin-top: 15px;
+    margin-left: 2px;
+}
+.single_job_listing .form fieldset label {
+    display: block;
+    color: #577690 !important;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.single_job_listing p {
+    font-size: 16px;
+    font-family: "TradeGothicLT", Arial, Tahoma, sans-serif;
+    line-height: 23px;
+    margin: 0 0 15px 0;
+}
+.single_job_listing .description {
+    font-family: "TradeGothicLT-Bold", Arial, Tahoma, sans-serif !important;
+    margin-bottom: 20px;
+    display: block;
+}
+
+
+.single_job_listing button{
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: "TradeGothicLT-BoldCondTwenty", Arial, Tahoma, sans-serif;
+    border: none;
+    background: #2bacc4 !important;
+    height: 30px;
+    line-height: 14px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.single_job_listing .container_form:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    background: url(../images/bg-stris.png);
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 15px;
+    border: none;
+}
+.single_job_listing h2 {
+    color: #2c4657;
+    font-size: 36px;
+    font-family: "Kulturista-Bold", Arial, Tahoma, sans-serif;
+    font-weight: normal;
+}
+.single_job_listing h2:after, .single_job_listing h3:after {
+    width: 100%;
+    background: #dae0e6;
+    height: 1px;
+    margin-top: 15px;
+    display: block;
+    content: "";
+}
+.single_job_listing h3:after {
+    margin-top: 0px;
+}
+
+.single_job_listing h3 {
+    color: #2bacc4;
+    font-family: "Kulturista-Bold", Arial, Tahoma, sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.infos.error{
+    max-width: 1024px;
+    margin: 20px auto 150px;
+}
+
+.job-header,
+.job-profil,
+.job-description{
+    padding: 50px 0;
+}
+
+.job-header .ast-container,
+.job-description .ast-container,
+.job-profil .ast-container{
+    max-width: 1024px !important;
+}
+
+.job-header h1,
+.job-contract-type,
+.job-location,
+.job-reference{
+    color : #0c4f4d;
+    font-weight: bold;
+}
+
+.job-header,
+.job-contact{
+    background: #f3efe2;
+}
+
+.job-header i{
+    font-size: 1.5em;
+}
+
+.job-profil{
+    background: #0c4f4d;
+    color: #f3efe2;
+    padding: 50px 0 150px;
+}
+
+.job-profil h2{
+    color: #f3efe2 !important;
+}
+
+.job-button-container{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.job-button-container .button{
+    background: #db9b47;
+    color: #f3efe2;
+    padding: 15px 70px;
+    font-family: "Frank Ruhl Libre", serif;
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 25px;
+}
+
+.job-button-container .button:hover{
+    background: #f3efe2;
+    color: #db9b47;
+}
+
+.job-contact{
+    max-width: 768px;
+    margin: -50px auto 50px;
+    padding: 30px 0 10px;
+}
+
+.job-contact figure{
+    text-align: center;
+}
+
+.job-contact img{
+    border-radius: 50%;
+    max-width: 250px;
+}
+
+.job-contact h2,
+.job-contact .name{
+    text-align: center;
+}
+
+.job-contact .wp-block-media-text{
+    padding-top: 20px;
+}
+
+.job-contact .name{
+    font-weight: bold;
+    padding-top: 20px;
+    width: 30%;
+}
+
+.sharethis-inline-share-buttons.editorskit-no-desktop{
+    text-align: center !important;
+    display: block !important;
+    padding-top: 40px;
+}
+
+.job-form {
+    z-index: 10;
+    background: #ffffff;
+    width: 100%;
+    margin: 0 auto;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    padding-top: 60px;
+    padding-bottom: 40px;
+    position: relative;
+    padding-left: 60px;
+    padding-right: 60px;
+    display:none;
+    transition: visibility 0s linear 0.33s, opacity 0.33s linear;
+    margin-top: -100px;
+    max-width: 1024px;
+    margin-bottom: 50px;
+}
+
+
+@media (max-width: 600px){
+
+    .job-form{
+        padding: 40px 20px;
+    }
+    .sharethis-inline-share-buttons.editorskit-no-mobile{
+        display: none !important;
+    }
+    .sharethis-inline-share-buttons.editorskit-no-desktop{
+        display: block !important;
+    }
+    .job-contact .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content{
+        -ms-grid-column: 1;
+        grid-column: 1;
+        -ms-grid-row: 1;
+        grid-row: 1;
+    }
+    .job-contact .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media{
+        -ms-grid-column: 1;
+        grid-column: 1;
+        -ms-grid-row: 2;
+        grid-row: 2;
+    }
+
+    .job-contact .name{
+        width: 100%;
+    }
+
+    .job-contact{
+        margin-bottom: 0;
+    }
+}

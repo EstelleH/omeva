@@ -1,0 +1,805 @@
+/**
+Theme Name: Astra Child - Omeva
+Author: Brainstorm Force
+Author URI: http://wpastra.com/
+Description: Child theme for Astra, A very lightweight and beautiful theme made to work with Page Builders.
+Version: 1.0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: astra-child
+Template: astra
+*/
+
+/** TOOLS **/
+h2, h3{
+    color: #0c4f4d !important;
+    font-weight: bold !important;
+}
+h2.title{
+    font-size: 3rem;
+}
+h1.title{
+    margin-top: 10px;
+}
+h3{
+    font-size: 2rem !important;
+}
+
+button:focus,
+a:focus{
+    outline: none !important;
+}
+
+.bg-paper{
+    background: url(https://www.omeva.fr/wp-content/uploads/2020/10/bg-paper-2.png) bottom center;
+}
+.omeva-container .wp-block-group__inner-container{
+    max-width: 960px !important;
+    margin: 0 auto !important;
+    padding: 3em 1em !important;
+}
+.omeva-container .wp-block-group__inner-container img{
+    margin-right: 20px;
+}
+@media (max-width: 600px){
+    .omeva-container .wp-block-group__inner-container img{
+        width: 50px !important;
+    }
+
+    .omeva-metier-header .wp-block-media-text__content{
+        padding: 1rem;
+    }
+}
+.wp-block-separator{
+    margin-top: 3.5em;
+    margin-bottom: 2.5em;
+}
+.wp-block-cover .wp-block-cover__inner-container{
+    max-width: 1240px;
+    margin: 0 auto;
+}
+.omeva-police-first{
+    font-family: 'Frank Ruhl Libre',serif !important;
+    font-weight: bold !important;
+}
+.omeva-police-second{
+    font-family: 'Exo',sans-serif !important;
+}
+
+.btn-underline{
+    transition: all 0.3s ease-out;
+    font-weight: bold;
+}
+
+.btn-underline:hover{
+    color: #db9b47;
+}
+.btn-underline:hover .ico-arrow{
+    border: 1px solid #db9b47;
+}
+
+.btn-underline:hover span{
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.btn-underline.white:hover{
+    color: #0c4f4d;
+}
+.btn-underline.white:hover .ico-arrow{
+    border: 1px solid #0c4f4d;
+}
+
+.ico-arrow{
+    font-size: 30px;
+    border: 1px solid #0c4f4d;
+    border-radius: 50%;
+    padding: 3px 0;
+    margin-left: 10px;
+    position: relative;
+    top: 7px;
+}
+.ico-arrow.white{
+    border: 1px solid #ffffff;
+}
+
+.omeva-button a:hover, .omeva-button a:active{
+    background-color: #db9b47 !important;
+}
+
+.wp-block-image.size-full{
+    margin: 0;
+}
+
+.omeva-citation{
+    padding: 100px 20px !important;
+    margin: 0 auto;
+    background: url(https://www.omeva.fr/wp-content/uploads/2020/10/bg-paper-2.png) bottom center;
+}
+
+.omeva-citation p{
+    max-width: 1240px;
+    margin: 0 auto 1.6em;
+}
+
+.omeva-form-container button,
+.wp-block-button .wp-block-button__link{
+    padding-top: 15px !important;
+    padding-bottom: 18px !important;
+}
+
+.omeva-form-container button:hover,
+.wp-block-button .wp-block-button__link:hover{
+    background-color: #db9b47 !important;
+}
+
+/** MENU **/
+.ast-header-break-point .ast-mobile-menu-buttons .ast-button-wrap .ast-mobile-menu-buttons-minimal{
+    font-size: 3rem;
+}
+.main-header-container{
+    min-height: 120px;
+}
+
+#primary-menu i.fa{
+    border: 2px solid #0c4f4d;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+#primary-menu i.fa-facebook{
+    padding: 5px 9px;
+}
+
+#primary-menu i.fa-linkedin{
+    padding: 5px 7px;
+}
+
+#primary-menu .menu-ico a{
+    padding: 0 !important;
+    color:#0c4f4d;
+}
+
+#primary-menu a:hover,
+#primary-menu a:active,
+#primary-menu .current-menu-item a{
+    color: #db9b47;
+}
+
+#primary-menu a:hover i.fa,
+#primary-menu a:active i.fa,
+#primary-menu .current-menu-item a i.fa {
+    border: 2px solid #db9b47;
+    color: #db9b47;
+}
+
+/*** MENU MOBILE ***/
+.ast-header-break-point .header-main-layout-1 .main-header-container{
+    min-height: inherit;
+}
+.ast-header-break-point .ast-button-wrap .menu-toggle:focus{
+    outline: none;
+}
+.ast-header-break-point #primary-menu{
+    background: #0c4f4d;
+    height: 100%;
+}
+
+.ast-header-break-point #primary-menu a,
+.ast-header-break-point #primary-menu .menu-ico a{
+    color: #f3efe2;
+}
+
+.ast-header-break-point #primary-menu i.fa {
+    border: 2px solid #f3efe2;
+}
+
+.ast-header-break-point #primary-menu a {
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 7px 15px;
+}
+
+.ast-header-break-point #primary-menu .menu-item-144,
+.ast-header-break-point #primary-menu .menu-item-145{
+    width: 50px;
+    float: left;
+}
+
+/*** FOOTER ***/
+.footer-adv{
+    font-family: 'Frank Ruhl Libre',serif !important;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.footer-adv a:hover,
+.footer-adv a.active{
+    color: #db9b47;
+}
+
+.footer-adv a:hover i,
+.footer-adv a.active i {
+    border: 2px solid #db9b47;
+}
+
+.footer-adv i.fa-facebook{
+    border: 2px solid #f3efe2;
+    border-radius: 50%;
+    padding: 6px 10px;
+    margin-right: 15px;
+}
+
+.footer-adv i.fa-linkedin{
+    border: 2px solid #f3efe2;
+    border-radius: 50%;
+    padding: 6px 7px;
+}
+
+.footer-adv-widget-1 img{
+    max-width: 200px !important;
+}
+
+.ast-small-footer .ast-container a{
+    color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 600px){
+    .footer-adv-widget-1 a{
+        width: 100%;
+        text-align: center;
+    }
+    .footer-adv-widget-1 img{
+        margin: 0 auto;
+    }
+
+    .footer-adv a{
+        font-size: 1.3rem;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .footer-adv-widget-2 .widget_text{
+        margin-bottom: 0 !important;
+    }
+
+    .footer-adv-widget-4 span{
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+}
+
+
+/*** COMMON BLOC ***/
+.bloc-omeva-positive .wp-block-cover__inner-container{
+    max-width: 768px;
+}
+.bloc-omeva-positive p{
+    margin-bottom: 20px;
+    max-width: 400px;
+}
+.bloc-omeva-positive p.has-large-font-size{
+    line-height: 1em;
+}
+
+.bloc-omeva-positive a{
+    color: white;
+}
+.omeva-recruteur-block-engagement a span,
+.bloc-omeva-positive a span{
+    max-width: 180px;
+    display: inline-block;
+    line-height: 1.3em;
+}
+.omeva-recruteur-block-engagement a .ico-arrow,
+.bloc-omeva-positive a .ico-arrow{
+    top: -5px;
+}
+
+@media (max-width: 600px){
+    .bloc-omeva-positive{
+        padding: 30px 20px;
+    }
+}
+
+/** HOMEPAGE **/
+.omeva-hp-title{
+    width: 35%;
+    margin-left: 65%;
+}
+.omeva-hp-buttons{
+    position: absolute;
+    z-index: 9;
+    width: 100%;
+    margin-top : -27px;
+}
+.omeva-hp-buttons a{
+    font-size: 1.5rem;
+    font-family: 'Frank Ruhl Libre',serif !important;
+    margin: 0 15px;
+    width: 255px;
+}
+
+.omeva-hp-buttons a:hover, .omeva-hp-buttons a:active{
+    background-color: #db9b47 !important;
+}
+
+@media (max-width: 600px){
+    .omeva-hp-buttons{
+        margin-top : 0 !important;
+        position: relative;
+        padding-bottom: 40px;
+    }
+
+    .omeva-hp-buttons .omeva-button{
+        margin: 10px 0 0;
+    }
+}
+
+.omeva-hp-block-mobile{
+    padding: 3rem 1rem;
+}
+
+.omeva-hp-block-mobile .wp-block-media-text__content{
+    padding: 8px;
+}
+
+.omeva-hp-block-mobile .wp-block-media-text{
+    text-align: center;
+}
+.omeva-hp-block-mobile .omeva-hp-block-mobile-1,
+.omeva-hp-block-mobile .omeva-hp-block-mobile-3{
+    display: inline-block;
+    clear: both;
+    width: 100%;
+}
+.omeva-hp-block-mobile .omeva-hp-block-mobile-1 .wp-block-media-text,
+.omeva-hp-block-mobile .omeva-hp-block-mobile-3 .wp-block-media-text{
+    width: 50%;
+    float: left;
+}
+
+.omeva-hp-block-mobile .wp-block-media-text h2{
+    font-size: 1.3rem;
+}
+.omeva-hp-block-mobile img{
+    width: 70px;
+}
+
+.omeva-hp-jobs{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #f6f4ea;
+}
+
+.editorskit-no-mobile .omeva-hp-jobs .wp-block-media-text__content{
+    max-width: 400px;
+}
+
+.omeva-hp-jobs .wp-block-media-text.has-media-on-the-right{
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.omeva-hp-jobs h2{
+    color:#0c4f4d !important;
+    font-size: 3rem;
+    font-weight: bold;
+
+}
+
+.omeva-hp-jobs .wp-block-media-text__media{
+    text-align: center;
+}
+.omeva-hp-jobs .wp-image-82{
+    max-width: 588px;
+    height: auto;
+}
+
+.omeva-hp-jobs .img-jobs-container{
+    position: relative;
+    max-width: 420px;
+    margin: 0 auto;
+}
+.omeva-hp-jobs .img-link-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.omeva-hp-jobs .img-link-container a{
+    position: absolute;
+    font-family: 'Frank Ruhl Libre',serif !important;
+    font-weight: bold;
+    color: #4a5258;
+    font-size: 20px;
+    line-height: 1em;
+}
+.omeva-hp-jobs .img-link-container a:hover, .omeva-hp-jobs .img-link-container a:active{
+    text-decoration: none;
+    color: #db9b47;
+}
+.omeva-hp-jobs .img-link-container .link-1{
+    top: 18%;
+    left: 50%;
+}
+.omeva-hp-jobs .img-link-container .link-2{
+    top: 50%;
+    left: -7%;
+}
+.omeva-hp-jobs .img-link-container .link-3{
+    top: 50%;
+    right: -18%;
+}
+.omeva-hp-jobs .img-link-container .link-4{
+    bottom: -1%;
+    left: 19%;
+}
+.omeva-hp-jobs .img-link-container .link-5{
+    bottom: -1%;
+    right: 5%;
+}
+
+.omeva-hp-jobs .img-link-container .link-4 i,
+.omeva-hp-jobs .img-link-container .link-5 i{
+    position: absolute;
+}
+
+.omeva-hp-engagement{
+    padding: 50px 15px;
+    background: url(https://www.omeva.fr/wp-content/uploads/2020/10/bg-paper-2.png) bottom center;
+}
+
+.omeva-hp-engagement p{
+    margin: 0 auto;
+    max-width: 604px;
+    text-align: center;
+}
+
+.omeva-hp-engagement h2{
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+.omeva-hp-engagement .blocks-gallery-grid{
+    margin: 0 auto 40px;
+}
+
+.omeva-hp-engagement .blocks-gallery-grid img{
+    height: 70%;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px){
+
+    .omeva-hp-engagement .blocks-gallery-grid li img{
+        height: auto;
+    }
+    .omeva-hp-engagement .blocks-gallery-grid li:nth-child(1) img{
+        max-width: 120px;
+        margin-bottom: 10px;
+    }
+    .omeva-hp-engagement .blocks-gallery-grid li:nth-child(2) img{
+        max-width: 80px;
+        margin-top: 30px;
+    }
+    .omeva-hp-engagement .blocks-gallery-grid li:nth-child(3) img{
+        max-width: 90px;
+        margin-bottom: 25px;
+    }
+    .omeva-hp-engagement .blocks-gallery-grid li:nth-child(5) img{
+        max-width: 160px;
+    }
+}
+
+/*** RECRUTEURS ***/
+.omeva-methodo-header{
+    padding-top: 100px;
+}
+
+.omeva-methodo-header h2{
+    font-size: 3em;
+}
+
+.omeva-methodo-header p{
+    max-width: 720px;
+    margin: 0 auto 40px;
+}
+
+.omeva-methodo-bloc-container{
+    padding-left: 75px;
+}
+
+@media (max-width: 600px){
+    .omeva-methodo-bloc-container{
+        padding-left: 0;
+    }
+}
+
+.omeva-methodo-bloc-container > .wp-block-group__inner-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.omeva-methodo-bloc{
+    border-radius: 50px;
+    width: 290px;
+    min-height: 345px;
+    margin-right: 75px;
+    padding: 40px 20px 10px;
+    color: #f3efe2;
+    margin-bottom: 50px;
+}
+
+.omeva-methodo-bloc h3{
+    color: #f3efe2 !important;
+    font-family: 'Frank Ruhl Libre',serif !important;
+    font-weight: bold;
+    min-height: 60px;
+    line-height: 1em;
+}
+
+.omeva-methodo-bloc .omeva-number{
+    margin-bottom: 0;
+    font-family: 'Frank Ruhl Libre',serif !important;
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 1.1em;
+}
+.omeva-methodo-bloc.omeva-methodo-1{
+    background-color: #0c4f4d;
+}
+.omeva-methodo-bloc.omeva-methodo-2{
+    background-color: #629989;
+}
+.omeva-methodo-bloc.omeva-methodo-3{
+    background-color: #96c0b4;
+}
+.omeva-methodo-bloc.omeva-methodo-4{
+    background-color: #dea459;
+}
+.omeva-methodo-bloc.omeva-methodo-5{
+    background-color: #bf8d4b;
+}
+
+.omeva-buttons-container{
+    padding-bottom: 70px;
+}
+
+.omeva-buttons-container a{
+    font-size: 24px;
+    color: #f3efe2;
+}
+
+.omeva-block{
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.omeva-block .wp-block-media-text__content{
+    max-width: 500px;
+    margin-left: 15%;
+}
+
+.omeva-block .wp-block-media-text__content .specific-max-width{
+    max-width: 370px;
+}
+
+.omeva-block h2{
+    line-height: 1.3em;
+}
+
+@media (min-width: 601px){
+    .omeva-block .wp-block-media-text__content{
+        margin-left: 15%;
+    }
+}
+@media (max-width: 1050px){
+    .omeva-block.omeva-recruteur-block-engagement .wp-block-media-text__content{
+        margin-left: 0;
+    }
+}
+@media (max-width: 600px){
+    .omeva-methodo-header{
+        margin: 0 30px;
+        padding-top: 50px;
+    }
+    .omeva-methodo-bloc{
+        margin: 10px auto;
+    }
+    .omeva-methodo-bloc.omeva-methodo-5{
+        margin-bottom: 50px;
+    }
+    .omeva-block.omeva-recruteur-block-engagement .wp-block-media-text__content,
+    .omeva-block .wp-block-media-text__content{
+        margin: 15px;
+    }
+
+    .omeva-block.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right figure{
+        -ms-grid-column: 1;
+        grid-column: 1;
+        -ms-grid-row: 1;
+        grid-row: 1;
+    }
+    .omeva-block.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__content{
+        -ms-grid-column: 1;
+        grid-column: 1;
+        -ms-grid-row: 2;
+        grid-row: 2;
+    }
+}
+
+/*** ENGAGEMENT ***/
+.omeva-engagement figure{
+    text-align: center;
+    background: white;
+}
+.omeva-engagement figure img{
+    max-width: 450px;
+}
+
+/*** EQUIPE ***/
+.omeva-team{
+    padding: 1em 0 !important;
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+
+.omeva-team h2{
+    margin-bottom: 0 !important;
+}
+
+.omeva-team .fa{
+    border: 2px solid #0c4f4d;
+    border-radius: 50%;
+    padding: 6px 7px;
+    margin-right: 15px;
+}
+
+.omeva-team .fa.fa-linkedin{
+    padding: 6px 8px;
+}
+
+.omeva-team .fa:hover {
+    color: #db9b47;
+    border: 2px solid #db9b47;
+}
+
+.omeva-team.omeva-block .wp-block-media-text__content{
+    margin-left: 0;
+}
+
+/*** METIER ***/
+.omeva-metier-header .wp-block-cover__inner-container{
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+h2.metier-title{
+    display: grid;
+    -ms-grid-columns: 70px 1fr;
+    grid-template-columns: 70px 1fr;
+    padding-top: 50px;
+}
+
+h2.metier-title img{
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+}
+
+h2.metier-title strong{
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    margin-left: 10px;
+}
+
+/*** CANNDIDAT ***/
+.omeva-charte .wp-block-media-text__media{
+    text-align: center;
+    background: #f3efe2;
+}
+.omeva-charte .wp-block-media-text__media img{
+    max-width: 450px;
+}
+
+/*** POSTE ***/
+
+.omeva-poste-header a{
+    color: #f3efe2;
+}
+.omeva-poste-header h2 {
+    color: #f3efe2 !important;
+    display: inline-block;
+}
+
+.omeva-poste-header .ico-return{
+    display: inline-block;
+}
+
+.omeva-poste-header .ico-arrow{
+    border: 1px solid #f3efe2;
+    border-radius: 50%;
+    margin-right: 10px;
+    top: 3px;
+}
+.omeva-poste-header .ico-arrow:before{
+    transform:rotate(180deg);
+    -ms-transform:rotate(180deg); /* Internet Explorer */
+    -moz-transform:rotate(180deg); /* Firefox */
+    -webkit-transform:rotate(180deg); /* Safari et Chrome */
+    -o-transform:rotate(180deg); /* Opera */
+}
+
+.omeva-poste-header a:hover,
+.omeva-poste-header a.active,
+.omeva-poste-header a:hover h2,
+.omeva-poste-header a.active h2{
+    color: #db9b47 !important;
+}
+
+.omeva-poste-header a:hover .ico-arrow,
+.omeva-poste-header a.active .ico-arrow{
+    border: 1px solid #db9b47;
+}
+
+/*** FORMULAIRES ***/
+.omeva-form-container{
+    max-width: 500px;
+    margin: 50px auto !important;
+}
+
+.omeva-form-container input{
+    max-width: 100% !important;
+}
+
+.omeva-form-container button{
+    background: #0c4f4d !important;
+    font-size: 24px !important;
+    color: #f3efe2 !important;
+    border: 0 !important;
+    border-radius: 25px !important;
+    font-family: "Frank Ruhl Libre", serif !important;
+    font-weight: bold !important;
+    width: 150px !important;
+    transition: all 0.3s ease-out;
+}
+
+.omeva-form-container button:hover{
+    background: #db9b47 !important;
+}
+
+.omeva-form-container .wpforms-submit-container{
+    text-align: center;
+}
+
+div.wpforms-container-full .wpforms-form .omeva-input input[type="text"],
+div.wpforms-container-full .wpforms-form .omeva-input input[type="email"],
+div.wpforms-container-full .wpforms-form .omeva-input textarea {
+    max-width: 100%;
+    display: block;
+    border: solid 1px #0c4f4d;
+    height: 42px;
+    border-radius: 25px;
+    float: left;
+    background: #ffffff !important;
+    margin-bottom: 15px;
+    color: #0c4f4d !important;
+    font-size: 16px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 38px;
+    min-height: initial;
+    box-shadow: none;
+}
+
+div.wpforms-container-full .wpforms-form .omeva-input textarea {
+    height: initial;
+}
+
+div.wpforms-container-full .wpforms-form .wpforms-field-description{
+    font-size: 0.8rem;
+    font-style: italic;
+}

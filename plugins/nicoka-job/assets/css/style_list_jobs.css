@@ -1,0 +1,123 @@
+.job_filters .job_types:after {
+    clear: both;
+}
+
+.job_filters .job_types:after,
+.job_filters .job_types:before {
+    content: "";
+    display: table;
+}
+
+.job_filters select {
+    padding: 10px 10px;
+    outline: none;
+    margin: 0;
+    width: 230px;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+/** JOBS LISTING **/
+
+.jobs-listing{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.jobs-listing .ast-container{
+    padding-bottom: 50px;
+    padding-top : 20px;
+}
+.jobs-listing .job-item{
+    padding-top: 30px;
+    transition: all 0.3s ease-out;
+}
+
+.jobs-listing .job-item:hover{
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+.jobs-listing .job-item h3{
+    color: #f3efe2 !important;
+    line-height: 1.1em;
+    font-size: 1.7rem !important;
+}
+.jobs-listing .job-item h3,
+.jobs-listing .job-item a,
+.jobs-listing .job-item a:active,
+.jobs-listing .job-item a:hover{
+    color: #f3efe2;
+}
+
+.jobs-listing .job-item .job-inner{
+    background-color: #0d4f4d;
+    color: #f3efe2;
+    min-height: 300px;
+    padding: 30px 20px;
+}
+.jobs-listing .job-item:nth-child(2) .job-inner,
+.jobs-listing .job-item:nth-child(4) .job-inner,
+.jobs-listing .job-item:nth-child(8) .job-inner,
+.jobs-listing .job-item:nth-child(10) .job-inner,
+.jobs-listing .job-item:nth-child(14) .job-inner,
+.jobs-listing .job-item:nth-child(16) .job-inner,
+.jobs-listing .job-item:nth-child(20) .job-inner,
+.jobs-listing .job-item:nth-child(22) .job-inner,
+.jobs-listing .job-item:nth-child(26) .job-inner,
+.jobs-listing .job-item:nth-child(28) .job-inner,
+.jobs-listing .job-item:nth-child(32) .job-inner,
+.jobs-listing .job-item:nth-child(34) .job-inner,
+.jobs-listing .job-item:nth-child(38) .job-inner
+{
+    background-color: #db9b47;
+}
+.jobs-listing .job-item:nth-child(3) .job-inner,
+.jobs-listing .job-item:nth-child(5) .job-inner,
+.jobs-listing .job-item:nth-child(9) .job-inner,
+.jobs-listing .job-item:nth-child(11) .job-inner,
+.jobs-listing .job-item:nth-child(15) .job-inner,
+.jobs-listing .job-item:nth-child(17) .job-inner,
+.jobs-listing .job-item:nth-child(21) .job-inner,
+.jobs-listing .job-item:nth-child(23) .job-inner,
+.jobs-listing .job-item:nth-child(27) .job-inner,
+.jobs-listing .job-item:nth-child(29) .job-inner,
+.jobs-listing .job-item:nth-child(33) .job-inner,
+.jobs-listing .job-item:nth-child(35) .job-inner
+{
+    background-color: #629989;
+}
+
+.jobs-listing .job-title{
+    min-height: 150px;
+}
+.jobs-listing .job-title h3{
+    font-family: "Frank Ruhl Libre",serif !important;
+}
+
+.jobs-listing .job-contract-type{
+    min-height: 60px;
+}
+
+.jobs-listing .job-item .job-location a,
+.jobs-listing .job-item .job-location a:active,
+.jobs-listing .job-item .job-location a:hover{
+    border-radius: 25px;
+    color: #0d4f4d;
+    background-color: #f3efe2;
+    padding: 10px 20px 10px 10px;
+}
+@media (max-width: 600px){
+    .jobs-listing{
+        padding: 30px 20px;
+    }
+    .jobs-listing .job-item{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
