@@ -115,6 +115,8 @@ class NicokaTemplate {
 		global $wp;
 
 		$this->title__ = $job->label;
+        $contact = $job->assign_to_objectid__formated;
+        $contactImg = "https://www.omeva.fr/" . str_replace(' ', '-', strtolower($contact));
 		?>
         <div class="job-contact animated fadeInUp">
             <div class="ast-container">
@@ -123,13 +125,14 @@ class NicokaTemplate {
                     <div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:30% auto">
                         <div class="wp-block-media-text__media">
                             <figure>
-                                <?php if ($job->assignTo == 'Aurelie Jourdon') {?>
+                                <?php if ($contact == 'Aurelie Jourdon') {?>
                                     <img src="https://www.omeva.fr/equipe/aurelie-jourdon"/>
-                                <?php } else if ($job->assignTo == 'Anthony Laronze') {?>
-                                    <img src="https://www.omeva.fr/anthony-laronze"/>
-                                <?php } else { ?>
+                                <?php } else if ($contact == 'Guillaume Jourdon') {?>
                                     <img src="https://www.omeva.fr/equipe/guillaume-jourdon"/>
+                                <?php } else { ?>
+                                    <img src="<?php echo $contactImg; ?>"/>
                                 <?php } ?>
+
                             </figure>
                         </div>
                         <div class="wp-block-media-text__content">
@@ -137,10 +140,10 @@ class NicokaTemplate {
                         </div>
                     </div>
                     <p class="name">
-                        <?php if ($job->assignTo == 'Aurelie Jourdon') {
+                        <?php if ($contact == 'Aurelie Jourdon') {
                             echo "Aurélie Jourdon";
                         }else{
-                            echo nl2br($job->assignTo);
+                            echo nl2br($contact);
                         }?>
                     </p>
                 </div>
