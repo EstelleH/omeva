@@ -445,6 +445,27 @@ a:focus{
 .omeva-hp-jobs .img-link-container .link-5 i{
     position: absolute;
 }
+.omeva-hp-ressources{
+    background: #629989;
+    padding-bottom: 30px;
+}
+
+.omeva-hp-ressources h2, .omeva-hp-ressources h3, .omeva-hp-ressources p{
+    color: #f6f4ea !important;
+}
+.omeva-hp-ressources p{
+    max-width: 500px;
+}
+.omeva-hp-ressources .ressources-arrow{
+    padding-left: 20%;
+}
+.omeva-hp-ressources + p{
+    text-align: center;
+    margin-top: -30px;
+}
+.omeva-hp-ressources + p a{
+    font-weight: bold;
+}
 
 .omeva-hp-engagement{
     padding: 50px 15px;
