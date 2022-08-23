@@ -180,7 +180,9 @@ class NicokaJob
 		wp_enqueue_script('nicoka_js_google');
 		switch ($type) {
 			case 'listJobs':
-				wp_register_style('nicoka_css_job', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
+                wp_register_script('nicoka_job', NICOKA_JOB_PLUGIN_URL . '/assets/js/list_jobs.js', array('jquery'));
+                wp_enqueue_script('nicoka_job');
+                wp_register_style('nicoka_css_job', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
 				wp_enqueue_style('nicoka_css_job');
 				break;
 			case 'teaserJobs':

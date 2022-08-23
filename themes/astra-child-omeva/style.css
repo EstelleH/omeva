@@ -58,6 +58,9 @@ a:focus{
     max-width: 1240px;
     margin: 0 auto;
 }
+.wp-block-cover h1, .wp-block-cover p{
+    margin-bottom: 0;
+}
 .omeva-police-first{
     font-family: 'Frank Ruhl Libre',serif !important;
     font-weight: bold !important;

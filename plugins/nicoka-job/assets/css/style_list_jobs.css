@@ -61,21 +61,8 @@
     min-height: 300px;
     padding: 30px 20px;
 }
-.jobs-listing .job-item:nth-child(2) .job-inner,
-.jobs-listing .job-item:nth-child(4) .job-inner,
-.jobs-listing .job-item:nth-child(8) .job-inner,
-.jobs-listing .job-item:nth-child(10) .job-inner,
-.jobs-listing .job-item:nth-child(14) .job-inner,
-.jobs-listing .job-item:nth-child(16) .job-inner,
-.jobs-listing .job-item:nth-child(20) .job-inner,
-.jobs-listing .job-item:nth-child(22) .job-inner,
-.jobs-listing .job-item:nth-child(26) .job-inner,
-.jobs-listing .job-item:nth-child(28) .job-inner,
-.jobs-listing .job-item:nth-child(32) .job-inner,
-.jobs-listing .job-item:nth-child(34) .job-inner,
-.jobs-listing .job-item:nth-child(38) .job-inner
-{
-    background-color: #db9b47;
+.jobs-listing .job-title{
+    min-height: 150px;
 }
 .jobs-listing .job-item:nth-child(3) .job-inner,
 .jobs-listing .job-item:nth-child(5) .job-inner,
@@ -88,13 +75,51 @@
 .jobs-listing .job-item:nth-child(27) .job-inner,
 .jobs-listing .job-item:nth-child(29) .job-inner,
 .jobs-listing .job-item:nth-child(33) .job-inner,
-.jobs-listing .job-item:nth-child(35) .job-inner
+.jobs-listing .job-item:nth-child(35) .job-inner,
+.jobs-listing .job-item:nth-child(39) .job-inner,
+.jobs-listing .job-item:nth-child(41) .job-inner,
+.jobs-listing .job-item:nth-child(45) .job-inner,
+.jobs-listing .job-item:nth-child(47) .job-inner,
+.jobs-listing .job-item:nth-child(51) .job-inner,
+.jobs-listing .job-item:nth-child(53) .job-inner,
+.jobs-listing .job-item:nth-child(57) .job-inner,
+.jobs-listing .job-item:nth-child(59) .job-inner,
+.jobs-listing .job-item:nth-child(63) .job-inner,
+.jobs-listing .job-item:nth-child(65) .job-inner,
+.jobs-listing .job-item:nth-child(69) .job-inner,
+.jobs-listing .job-item:nth-child(71) .job-inner,
+.jobs-listing .job-item:nth-child(75) .job-inner
 {
     background-color: #629989;
 }
 
-.jobs-listing .job-title{
-    min-height: 150px;
+.jobs-listing .job-item:nth-child(2) .job-inner,
+.jobs-listing .job-item:nth-child(4) .job-inner,
+.jobs-listing .job-item:nth-child(8) .job-inner,
+.jobs-listing .job-item:nth-child(10) .job-inner,
+.jobs-listing .job-item:nth-child(14) .job-inner,
+.jobs-listing .job-item:nth-child(16) .job-inner,
+.jobs-listing .job-item:nth-child(20) .job-inner,
+.jobs-listing .job-item:nth-child(22) .job-inner,
+.jobs-listing .job-item:nth-child(26) .job-inner,
+.jobs-listing .job-item:nth-child(28) .job-inner,
+.jobs-listing .job-item:nth-child(32) .job-inner,
+.jobs-listing .job-item:nth-child(34) .job-inner,
+.jobs-listing .job-item:nth-child(38) .job-inner,
+.jobs-listing .job-item:nth-child(40) .job-inner,
+.jobs-listing .job-item:nth-child(44) .job-inner,
+.jobs-listing .job-item:nth-child(46) .job-inner,
+.jobs-listing .job-item:nth-child(50) .job-inner,
+.jobs-listing .job-item:nth-child(52) .job-inner,
+.jobs-listing .job-item:nth-child(56) .job-inner,
+.jobs-listing .job-item:nth-child(58) .job-inner,
+.jobs-listing .job-item:nth-child(62) .job-inner,
+.jobs-listing .job-item:nth-child(64) .job-inner,
+.jobs-listing .job-item:nth-child(68) .job-inner,
+.jobs-listing .job-item:nth-child(70) .job-inner,
+.jobs-listing .job-item:nth-child(74) .job-inner
+{
+    background-color: #db9b47;
 }
 .jobs-listing .job-title h3{
     font-family: "Frank Ruhl Libre",serif !important;
@@ -112,6 +137,22 @@
     background-color: #f3efe2;
     padding: 10px 20px 10px 10px;
 }
+
+.jobs-listing #nav{
+    text-align: center;
+    padding-bottom: 50px;
+}
+.jobs-listing #nav a{
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: larger;
+}
+
+.jobs-listing #nav a.active{
+    background-color: #0d4f4d;
+    color: #f3efe2;
+}
+
 @media (max-width: 600px){
     .jobs-listing{
         padding: 30px 20px;
