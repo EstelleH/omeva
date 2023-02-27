@@ -284,6 +284,21 @@ class NicokaRest {
 		}
 	}
 
+    /**
+     * Get list of job categories
+     *
+     * @return object
+     * @throws Exception
+     */
+    public function getNicokaJobCategories() {
+        $jobCategories = $this->getEntitiesValues('1311');
+        $result = [];
+        foreach ($jobCategories as $jobCategory) {
+            $result[$jobCategory->categoryid] = $jobCategory->label;
+        }
+        return $result;
+    }
+
 	/**
 	 * Get specific Job by uid
 	 *

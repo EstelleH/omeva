@@ -220,7 +220,26 @@ class NicokaJob
 		$rest = NicokaRest::instance();
 
 		$order = (isset($opt['order'])) ? $opt['order'] :  null;
+        $jobCategoriesList = $rest->getNicokaJobCategories();
+        //var_dump($jobCategoriesList); exit;
         $jobs = $rest->getNicokaJobs(null, $order, '400');
+        $types = [];
+        $departments = [];
+        $jobCategories = [];
+
+        foreach($jobs as $job){
+            if (!array_search($job->contract_type, $types)){
+                $types[$job->contrat_type] = $job->contract_type__formated;
+            }
+
+            if (!array_search($job->city, $departments)){
+                $departments[$job->city] = $job->city;
+            }
+
+            if (array_key_exists($job->categoryid, $jobCategoriesList)){
+                $jobCategories[$job->categoryid] = $jobCategoriesList[$job->categoryid];
+            }
+        }
 
 		if (intval($opt['limit']) > 0){
             $jobs = array_slice($jobs, 0, intval($opt['limit']));
@@ -229,7 +248,8 @@ class NicokaJob
 		ob_start();
 
         $this->add_css('listJobs');
-        echo NicokaTemplate::instance()->getTemplateJobs($jobs);
+
+        echo NicokaTemplate::instance()->getTemplateJobs($jobs, $types, $departments, $jobCategories);
         return '<div class="jobs-listing">' . ob_get_clean() . '</div>';
 	}
 
@@ -631,6 +651,14 @@ class NicokaJob
                         'placeholder' 	=> 'Mon CV *',
                         'attributes' 	=> ['accept="'.implode(',',self::FileType).'"'],
                         'value' 		=> (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($response['type']) && $response['type'] === 'error' && $_FILES['NICOKA_ENTITY_CV']) ? $_FILES['NICOKA_ENTITY_CV'] : null)
+                    ],
+                    [
+                        'type'			=> 'file',
+                        'required' 		=> false,
+                        'option'		=> ['name' => NICOKA_ENTITY_LETTER_MOTIV],
+                        'placeholder' 	=> 'Ma lettre de motivation (optionnel)',
+                        'attributes' 	=> ['accept="'.implode(',',self::FileType).'"'],
+                        'value' 		=> (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($response['type']) && $response['type'] === 'error' && $_FILES['NICOKA_ENTITY_LETTER_MOTIV']) ? $_FILES['NICOKA_ENTITY_LETTER_MOTIV'] : null)
                     ],
                     [
                         'type'		=> 'textarea',
