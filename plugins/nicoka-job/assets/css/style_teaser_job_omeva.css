@@ -1,0 +1,135 @@
+.jobs-teaser{
+    padding: 50px 0 20px;
+}
+.jobs-teaser h2.title,
+.jobs-teaser .cta{
+    text-align: center;
+}
+
+.jobs-teaser .cta{
+    padding-bottom: 20px;
+}
+
+.embla {
+  --slide-spacing: 1rem;
+  --slide-size: 33.33333%;
+  --slide-height: 19rem;
+  padding: 1.6rem;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  margin: 10px;
+  position: relative;
+}
+  
+.embla__button {
+    z-index: 1;
+    color: black;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-500%);
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    background-color: transparent;
+    touch-action: manipulation;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .embla__button--prev {
+    left: 1.6rem;
+  }
+  .embla__button--next {
+    right: 1.6rem;
+  }
+  .embla__button:disabled {
+    opacity: 0.3;
+  }
+  .embla__button__svg {
+    width: 65%;
+    height: 65%;
+  }
+  
+ /* #######################################*/
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.swiper-button-prev, .swiper-button-next
+{
+    --swiper-navigation-color: black;
+
+}
+
+.swiper-button-prev-svg, .swiper-button-next-svg
+{
+  z-index: 1;
+  color: black;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-500%);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  touch-action: manipulation;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.swiper-button-prev-svg
+{
+  left: 0;
+  margin-left: 5%;
+}
+
+.swiper-button-next-svg
+{
+  right: 0;
+  margin-right: 5%;
+}
+
+.job-inner
+{
+  border-radius: 15px;
+}
+
+.jobs-listing .job-item .job-inner
+{
+  min-height: 250px;
+}
+
+.jobs-teaser
+{
+  margin-bottom: 60px;
+}

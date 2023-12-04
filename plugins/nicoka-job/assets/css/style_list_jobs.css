@@ -23,6 +23,187 @@
     box-sizing: border-box;
 }
 
+#btn-filter-offer
+{
+    background-color: #629989;
+    color : white;
+    text-align: center;
+    min-height: var(--height-button);
+    max-height: var(--height-button);
+    font-size: 16px;
+    border-radius: 25px;
+    font-weight: bold;
+    padding: 0 25px;
+    float: right;
+    z-index: 999;
+    position: relative;
+    margin-right: 200px;
+}
+
+#btn-filter-reset
+{
+    background-color: #db9b47;
+    color : white;
+    text-align: center;
+    min-height: var(--height-button);
+    max-height: var(--height-button);
+    font-size: 16px;
+    border-radius: 25px;
+    font-weight: bold;
+    padding: 0 25px;
+    float: right;
+    z-index: 999;
+    position: relative;
+    margin-right: 40px;
+}
+
+.label_category_dropdown
+{
+    font-weight: 900;
+    color:#0d4f4d;
+}
+
+.filter_form_offer_inline
+{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: -100px;
+}
+
+.block-cover-job-offer
+{
+    height: 300px;
+    align-items:baseline;
+}
+
+.text-band-offer-job
+{
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-left: 40px;
+}
+
+.partner-carrier
+{
+    font-weight: bold;
+    color: #0d4f4d;
+    padding-top: 25px;
+}
+
+
+/*********************************/
+/**** Dropdown listing design ****/
+/*********************************/
+
+:root {
+    /* Desktop & Colors */
+    --width-button: 243px;
+    --height-button: 48px;
+    --color-white: #FFFFFF;
+    --color-forest-green: #3E4F51;
+    --color-purple: #79456F;
+  }
+
+.dropdown-city-container, .dropdown-sport-container,
+.submit-search-container, .reset-search-container {
+  position: relative;
+  width: var(--width-button);
+  margin-left: 40px;
+}
+
+.dropdown-city-container
+{
+    padding-bottom: 100px;
+    width: 400px;
+}
+
+.dropdown-element {
+  width: 400px;
+  position: absolute;
+  display: inline-block;
+  min-height: var(--height-button);
+  max-height: var(--height-button);
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  color: #444;
+  outline: none;
+  border-radius: 25px;
+  background-color: var(--color-white);
+  transition: .3s all ease-in-out;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 16%);
+  font-size: 16px;
+  font-weight: bold;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d='M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 14px;
+  background-size: 15px;
+  z-index: 1000;
+  border: 1px solid #0d4f4d;
+}
+
+.dropdown-element input {
+  width: 1px;
+  height: 1px;
+  display: inline-block;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 14px;
+}
+
+.dropdown-element label {
+  display: block;
+  height: 48px;
+  line-height: 48px;
+  padding-left: 35px;
+  padding-right: 50px;
+  cursor: pointer;
+  position: relative;
+  transition: .3s color ease-in-out;
+}
+
+.dropdown-element input[type='checkbox'] {
+    accent-color: #629989;
+}
+
+.dropdown-element.expanded {
+  padding: 0;
+  max-height: inherit;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d='M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z'/></svg>");
+}
+
+.labelOpacity
+{
+    opacity: 0.7;
+}
+
+.wrapp-element
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.labels_selected_categories span
+{
+    border: 1.5px solid black;
+    border-radius: 25px;
+    padding: 5px 10px;
+    font-weight: bold;
+    margin: 5px 10px;
+    text-align: center;
+}
+
+.labels_selected_categories
+{
+	margin-top:10px;
+	margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /** JOBS LISTING **/
 
 .jobs-listing{
@@ -61,6 +242,12 @@
     min-height: 300px;
     padding: 30px 20px;
 }
+
+.job-inner
+{
+    border-radius: 15px;
+}
+
 .jobs-listing .job-title{
     min-height: 150px;
 }
@@ -121,6 +308,17 @@
 {
     background-color: #db9b47;
 }
+
+.job-block-clickable
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
 .jobs-listing .job-title h3{
     font-family: "Frank Ruhl Libre",serif !important;
 }
@@ -153,12 +351,50 @@
     color: #f3efe2;
 }
 
-@media (max-width: 600px){
+@media (max-width: 960px)
+{
+    #btn-filter-offer
+    {
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 780px){
     .jobs-listing{
         padding: 30px 20px;
     }
     .jobs-listing .job-item{
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .dropdown-element, .dropdown-city-container
+    {
+        width: 100%;
+    }
+
+    .dropdown-city-container
+    {
+        margin-left: 0px;
+        padding-bottom: 80px;
+    }
+
+    .filter_form_offer_inline {
+        display: block;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: -275px;
+    }
+
+    #btn-filter-offer , #btn-filter-reset 
+    {
+        float: left;
+        margin-right: 0px; 
+        width: 100%;
+        margin-bottom: 35px;
+    }
+
+    .block-cover-job-offer {
+        height: 500px;
     }
 }

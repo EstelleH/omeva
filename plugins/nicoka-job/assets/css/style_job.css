@@ -170,6 +170,11 @@
     padding: 50px 0;
 }
 
+.job-header
+{
+    padding-bottom: 10px;
+}
+
 .job-header .ast-container,
 .job-description .ast-container,
 .job-profil .ast-container{
@@ -227,6 +232,8 @@
     max-width: 768px;
     margin: -50px auto 50px;
     padding: 30px 0 10px;
+    height: 350px;
+    border-radius: 10px;
 }
 
 .job-contact figure{
@@ -244,19 +251,41 @@
 }
 
 .job-contact .wp-block-media-text{
-    padding-top: 20px;
+    padding-top: 0px;
 }
 
 .job-contact .name{
     font-weight: bold;
-    padding-top: 20px;
-    width: 30%;
+    text-align: right;
+    margin-top: -40px;
+    padding-right: 8%;
 }
 
 .sharethis-inline-share-buttons.editorskit-no-desktop{
     text-align: center !important;
     display: block !important;
     padding-top: 40px;
+}
+
+.share-buttons-job
+{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.share-buttons-job div
+{
+    border: 1px solid white;
+    width: 40px;
+    text-align: center;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .job-form {
@@ -283,6 +312,17 @@
 }
 
 
+.job-header h1
+{
+    margin-bottom: 50px;
+}
+
+.text-job-intro
+{
+    margin-bottom: 0;
+    text-align: justify;
+}
+
 @media (max-width: 600px){
 
     .job-form{
@@ -307,11 +347,17 @@
         grid-row: 2;
     }
 
-    .job-contact .name{
-        width: 100%;
-    }
-
-    .job-contact{
+    .job-contact 
+    {
         margin-bottom: 0;
+        height: auto;
+        border-radius: 0;
+        text-align: center;
+    }
+    
+    .job-contact .name {
+        width: 100%;
+        text-align: center;
+        margin-top: 28px;
     }
 }

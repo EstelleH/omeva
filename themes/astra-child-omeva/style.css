@@ -330,6 +330,16 @@ a:focus{
     display:block;
 }
 
+.omeva-hp-header-mobile{
+    position : relative;
+}
+.omeva-hp-header-mobile figure{
+    display:none;
+}
+.omeva-hp-header-mobile figure:nth-child(1){
+    display:block;
+}
+
 .omeva-hp-buttons{
     position: absolute;
     z-index: 9;
@@ -371,16 +381,19 @@ a:focus{
     text-align: center;
 }
 .omeva-hp-block-mobile .omeva-hp-block-mobile-1,
+.omeva-hp-block-mobile .omeva-hp-block-mobile-2,
 .omeva-hp-block-mobile .omeva-hp-block-mobile-3{
     display: inline-block;
     clear: both;
     width: 100%;
 }
 .omeva-hp-block-mobile .omeva-hp-block-mobile-1 .wp-block-media-text,
+.omeva-hp-block-mobile .omeva-hp-block-mobile-2 .wp-block-media-text,
 .omeva-hp-block-mobile .omeva-hp-block-mobile-3 .wp-block-media-text{
     width: 50%;
     float: left;
 }
+
 
 .omeva-hp-block-mobile .wp-block-media-text h2{
     font-size: 1.3rem;
@@ -443,25 +456,35 @@ a:focus{
     text-decoration: none;
     color: #db9b47;
 }
-.omeva-hp-jobs .img-link-container .link-1{
-    top: 18%;
-    left: 50%;
+.omeva-hp-jobs .img-link-container .link-1 {
+    top: 20%;
+    left: 43%;
 }
-.omeva-hp-jobs .img-link-container .link-2{
-    top: 50%;
-    left: -7%;
+
+
+.omeva-hp-jobs .img-link-container .link-2 {
+    top: 38%;
+    left: 0%;
 }
-.omeva-hp-jobs .img-link-container .link-3{
-    top: 50%;
-    right: -18%;
+
+.omeva-hp-jobs .img-link-container .link-3 {
+    top: 38%;
+    right: -7%;
 }
-.omeva-hp-jobs .img-link-container .link-4{
-    bottom: -1%;
-    left: 19%;
+
+.omeva-hp-jobs .img-link-container .link-4 {
+    bottom: 14%;
+    left: 4%;
 }
-.omeva-hp-jobs .img-link-container .link-5{
-    bottom: -1%;
-    right: 5%;
+
+.omeva-hp-jobs .img-link-container .link-5 {
+    bottom: -7%;
+    right: 30%;
+}
+
+.omeva-hp-jobs .img-link-container .link-6 {
+    bottom: 15%;
+    right: -3%;
 }
 
 .omeva-hp-jobs .img-link-container .link-4 i,
@@ -480,6 +503,20 @@ a:focus{
     max-width: 510px;
 }
 .omeva-hp-ressources .ressources-arrow{
+    padding-left: 5%;
+}
+
+.img_mission_report
+{
+    padding: 60px;
+}
+
+.date_mission_report
+{
+    font-size: 1.5rem !important;
+}
+
+.omeva-hp-ressources .ressources-arrow-candidat{
     padding-left: 20%;
 }
 .omeva-hp-ressources + p{
@@ -832,6 +869,11 @@ a:focus{
     padding: 4px 7px;
 }
 
+.team-orange-card-link, .team-orange-card-link:hover
+{
+    color:white;
+}
+
 @media (max-width: 1024px) {
     .omeva-team-container > .wp-block-group__inner-container{
         width: 770px;
@@ -886,6 +928,7 @@ a:focus{
 .omeva-metier-header .wp-block-cover__inner-container{
     max-width: 960px;
     margin: 0 auto;
+    text-align: center;
 }
 
 h2.metier-title{
@@ -915,6 +958,28 @@ h2.metier-title strong{
 }
 .omeva-charte .wp-block-media-text__media img{
     max-width: 450px;
+}
+
+.title-ressources-file
+{
+    font-size: 25px;
+}
+
+.btn-ressources-file-candidat
+{
+    margin-top: 60px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.btn-mobile-ressources
+{
+    font-weight: bold;
+}
+
+.ressources-file-btn-arrow
+{
+    display: flex;
 }
 
 /*** POSTE ***/

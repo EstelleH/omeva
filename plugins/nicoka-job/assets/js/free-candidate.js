@@ -23,6 +23,27 @@ jQuery(document).ready(function (n) {
         setErrorRules(n(this), re, info);
     });
 
+    // Email must be confirmed
+    n('#email-confirm').on('input', function() {
+        var email = n('#email').val();
+        var input = n(this);
+        var submit = n('#form-submit');
+        var info = n('#submit-infos .error-email-confirm');
+        if(email != n(this).val())
+        {
+            input.addClass("error");
+            info.addClass("error");
+            submit.attr('disabled', 'disabled');
+        }
+        else
+        {
+            input.removeClass("error");
+            info.removeClass("error");
+            submit.removeAttr('disabled');
+        }
+        
+    });
+
     // Phone must be 10 digits : 0000000000
     n('#phone1').on('input', function() {
         var re = /0[1-9]\d{8}/;

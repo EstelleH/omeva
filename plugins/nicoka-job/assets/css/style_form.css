@@ -344,6 +344,16 @@ border:none !important;
     margin-left: 5px;
 }
 
+.omeva-form-infos fieldset.fieldset-phone1-new{
+    width : calc(50% - 5px);
+    margin-right: 5px;
+}
+
+.omeva-form-infos fieldset.fieldset-email-confirm{
+    width: calc(50% - 5px);
+    margin-left: 5px;
+}
+
 .omeva-address fieldset.fieldset-zipcode{
     width: calc(20% - 10px);
     margin-right: 10px;
@@ -363,7 +373,9 @@ border:none !important;
     .omeva-address fieldset.fieldset-zipcode,
     .omeva-address fieldset.fieldset-city,
     .omeva-form-infos fieldset.fieldset-email,
-    .omeva-form-infos fieldset.fieldset-phone1{
+    .omeva-form-infos fieldset.fieldset-phone1-new,
+    .omeva-form-infos fieldset.fieldset-email-confirm
+    {
         margin: 0;
         width: 100%;
     }

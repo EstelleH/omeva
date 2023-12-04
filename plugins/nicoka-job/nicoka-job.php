@@ -97,10 +97,14 @@ class NicokaJob
 
 			//Listing of Jobs with filters
 			add_shortcode('nicoka-jobs-listing', array($this, 'outputJobsListing'));
+            //Listing of Jobs with filters
+			add_shortcode('nicoka-jobs-listing-new', array($this, 'outputJobsListingNew'));
 			//Job page with the form 
 			add_shortcode('nicoka-job', array($this, 'outputJob'));
             //Teaser of Jobs
             add_shortcode('nicoka-jobs-teaser', array($this, 'outputJobsTeaser'));
+            //Teaser of Jobs
+            add_shortcode('nicoka-jobs-teaser-omeva', array($this, 'outputJobsTeaserOmeva'));
             //Free Candidate Form
             add_shortcode('nicoka-form-free-candidate', array($this, 'outputFormFreeCandidate'));
 		}
@@ -178,6 +182,16 @@ class NicokaJob
 		wp_enqueue_style('nicoka_css_form');
 		wp_register_script('nicoka_js_google', 'https://www.google.com/recaptcha/api.js');
 		wp_enqueue_script('nicoka_js_google');
+        wp_register_script('nicoka_js_fontawesome', 'https://kit.fontawesome.com/716e78c7a9.js');
+        wp_enqueue_script('nicoka_js_fontawesome');
+
+        ?>
+        <script>
+            var data = <?php echo json_encode($type); ?>;
+            console.log(data);
+        </script>
+        <?php
+
 		switch ($type) {
 			case 'listJobs':
                 wp_register_script('nicoka_job', NICOKA_JOB_PLUGIN_URL . '/assets/js/list_jobs.js', array('jquery'));
@@ -191,13 +205,21 @@ class NicokaJob
 				wp_enqueue_style('nicoka_css_job');
 				wp_enqueue_style('nicoka_css_job_teaser');
 				break;
+            case 'teaserJobsOmeva':
+                wp_register_style('nicoka_css_job', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
+                wp_register_style('nicoka_css_job_teaser_omeva', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_teaser_job_omeva.css');
+                wp_enqueue_style('nicoka_css_job');
+                wp_enqueue_style('nicoka_css_job_teaser_omeva');
+                wp_register_style('swiper_css', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css');
+                wp_enqueue_style('swiper_css');
+                break;
 			case 'job':
 				wp_register_script('nicoka_job', NICOKA_JOB_PLUGIN_URL . '/assets/js/job.js', array('jquery'));
 				wp_enqueue_script('nicoka_job');
 				wp_register_style('nicoka_css_job', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_job.css');
 				wp_enqueue_style('nicoka_css_job');
-                wp_register_script('nicoka_job_share_this', 'https://platform-api.sharethis.com/js/sharethis.js#property=5fa80d35e3f5df0012a01854&product=inline-share-buttons');
-                wp_enqueue_script('nicoka_job_share_this');
+                wp_register_script('nicoka_job_share_this_3', 'https://platform-api.sharethis.com/js/sharethis.js#property=642a7b7e8c76d7001227574c&product=custom-share-buttons');
+                wp_enqueue_script('nicoka_job_share_this_3');
 				break;
             case 'freeCandidateForm':
                 wp_register_script('nicoka_free_candidate', NICOKA_JOB_PLUGIN_URL . '/assets/js/free-candidate.js', array('jquery'));
@@ -221,7 +243,6 @@ class NicokaJob
 
 		$order = (isset($opt['order'])) ? $opt['order'] :  null;
         $jobCategoriesList = $rest->getNicokaJobCategories();
-        //var_dump($jobCategoriesList); exit;
         $jobs = $rest->getNicokaJobs(null, $order, '400');
         $types = [];
         $departments = [];
@@ -253,6 +274,43 @@ class NicokaJob
         return '<div class="jobs-listing">' . ob_get_clean() . '</div>';
 	}
 
+    
+	/**
+	 * Output Listing Job
+	 *
+	 * @param Array $opt
+	 * @return string
+	 */
+	public function outputJobsListingNew($opt)
+	{
+		global $post;
+		$rest = NicokaRest::instance();
+
+		$order = (isset($opt['order'])) ? $opt['order'] :  null;
+        $jobCategoriesList = $rest->getNicokaJobCategories();
+        $jobs = $rest->getNicokaJobs(null, $order, '400');
+        $types = [];
+        $departments = [];
+        $jobCategories = [];
+
+        foreach($jobs as $job){
+            if (array_key_exists($job->categoryid, $jobCategoriesList)){
+                $jobCategories[$job->categoryid] = $jobCategoriesList[$job->categoryid];
+            }
+        }
+
+		if (intval($opt['limit']) > 0){
+            $jobs = array_slice($jobs, 0, intval($opt['limit']));
+        }
+
+		ob_start();
+
+        $this->add_css('listJobs');
+
+        echo NicokaTemplate::instance()->getTemplateJobsNew($jobs, $types, $departments, $jobCategories);
+        return '<div class="jobs-listing">' . ob_get_clean() . '</div>';
+	}
+
 	/**
 	 * Output Teaser jobs
 	 *
@@ -270,6 +328,26 @@ class NicokaJob
 
         $this->add_css('teaserJobs');
         echo NicokaTemplate::instance()->getTemplateTeaserJobs($jobs);
+        return '<div class="jobs-listing animated fadeIn">' . ob_get_clean() . '</div>';
+	}
+
+    /**
+	 * Output Teaser jobs
+	 *
+	 * @param Array $opt
+	 * @return string
+	 */
+	public function outputJobsTeaserOmeva($opt)
+	{
+		global $post;
+		$rest = NicokaRest::instance();
+
+        $jobs = $rest->getNicokaJobs(['customerid' => 295],null,null);
+
+		ob_start();
+
+        $this->add_css('teaserJobsOmeva');
+        echo NicokaTemplate::instance()->getTemplateTeaserJobsOmeva($jobs);
         return '<div class="jobs-listing animated fadeIn">' . ob_get_clean() . '</div>';
 	}
 
@@ -611,7 +689,17 @@ class NicokaJob
                     [
                         'type'		=> 'text',
                         'required' 	=> true,
-                        'option'	=> ['name' => 'phone1', 'label_hidden' => true, 'desc' => 'Format : 0102030405'],
+                        'option'	=> ['name' => 'email-confirm', 'label_hidden' => true],
+                        'placeholder' => 'Confirmer E-mail *',
+                        'value' => (($_SERVER['REQUEST_METHOD'] === 'POST'  && isset($response['type']) && $response['type'] === 'error'))
+                    ]
+                ];
+
+                $configFormInfos4 = [
+                    [
+                        'type'		=> 'text',
+                        'required' 	=> true,
+                        'option'	=> ['name' => 'phone1-new', 'label_hidden' => true, 'desc' => 'Format : 0102030405'],
                         'placeholder' => 'Téléphone *',
                         'value' => (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($response['type']) && $response['type'] === 'error' && $_POST['phone1']) ? $_POST['phone1'] : null)
                     ]
@@ -686,6 +774,9 @@ class NicokaJob
                 <div class="omeva-form-infos"><?php
                     $formInstance->outputForm($configFormInfos3);
                     ?></div>
+                <div class="omeva-form-infos"><?php
+                    $formInstance->outputForm($configFormInfos4);
+                    ?></div>
                 <div class="form-content">
                     <h3>Mon adresse</h3>
                 </div><?php
@@ -708,6 +799,7 @@ class NicokaJob
                 <fieldset>
                     <div id="submit-infos">
                         <p class="error-email">Veuillez saisir une adresse email correcte.</p>
+                        <p class="error-email-confirm">Veuillez saisir une adresse email identique</p>
                         <p class="error-phone">Veuillez saisir un numéro de téléphone correct.<br/>Format 10 chiffres sans espace ni indicatif.</p>
                     </div>
                     <button id="form-submit" type="submit" class="button">Envoyer</button>
@@ -746,6 +838,7 @@ class NicokaJob
         return '<div class="job-page">' . ob_get_clean(). '</div>';
     }
 
+
     /**
      * Output specific Job
      *
@@ -764,6 +857,7 @@ class NicokaJob
 
         return '<div class="free-candidate animated fadeIn">' . ob_get_clean(). '</div>';
     }
+
 }
 
 function NICOKAJOB()
