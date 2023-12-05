@@ -89,7 +89,7 @@
 .swiper-button-prev-svg, .swiper-button-next-svg
 {
   z-index: 1;
-  color: black;
+  color: #0c4f4d;
   position: absolute;
   display: flex;
   align-items: center;
@@ -132,4 +132,26 @@
 .jobs-teaser
 {
   margin-bottom: 60px;
+}
+
+.job-header
+{
+    padding: 50px 0 0 10px;
+    background: #f3efe2;
+}
+
+.job-header .ast-container{
+    max-width: 1024px !important;
+}
+
+.job-header h1{
+    color : #0c4f4d;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.text-job-intro
+{
+    margin-bottom: 0;
+    text-align: justify;
 }

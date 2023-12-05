@@ -119,6 +119,34 @@ class NicokaTemplate
         <?php
     }
 
+    /**
+     * Generate Job template
+     *
+     * @param object $job
+     * @return void
+     */
+        public function getTemplateUnavailableJob($job)
+    {
+        global $wp;
+
+        $this->title__ = $job->label;
+        ?>
+        <div class="job-header animated fadeIn">
+            <div class="ast-container">
+                <div class="ast-row">
+                    <div class="ast-col-lg-7 ast-col-md-7 ast-col-sm-12 ast-col-xs-12 animated fadeInLeft">
+                        <h1 class="title-job-detail"><?php echo $job->label; ?></h1>
+                    </div>
+                </div>
+                <div class="ast-row">
+                    <div class="ast-col-sm-12 ast-col-xs-12 animated fadeInLeft">
+                        <p class="text-job-intro">Malheureusement cette offre a été pourvue, n’hésitez pas à consulter nos autres offres d’emploi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
     
     /**
      * Generate Job Contact template
@@ -199,27 +227,6 @@ class NicokaTemplate
      * @param Array $filter
      * @return void
      */
-    private function getFormFilterJobs($filter, $title, $id)
-    {
-        ?>
-        <div>
-            <label><?php echo $title ?></label>
-            <select id="<?php echo $id ?>" class="select-filter">
-                <option value="all">Tous</option>
-                <?php foreach ((array)$filter as $key => $val) { ?>
-                    <option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-                <?php } ?>
-            </select>
-        </div>
-        <?php
-    }
-
-        /**
-     * Generate HTML filter Jobs
-     *
-     * @param Array $filter
-     * @return void
-     */
     private function getFormFilterJobsNew($filter, $title, $id)
     {
         ?>
@@ -266,88 +273,7 @@ class NicokaTemplate
      * @param Array $jobs
      * @return void
      */
-    public function getTemplateJobs($jobs, $types, $departments, $jobCategories)
-    {
-        ?>
-        <form class="job_filters">
-            <div class="bloc-form">
-                <div class="box-filtres-campus">
-                    <?php /*
-                    if ($jobCategories && count($jobCategories) > 1) {
-                        $this->getFormFilterJobs($jobCategories, "Secteur d'activité", "item-filter-category");
-                    }
-                    if ($departments && count($departments) > 1) {
-                        $this->getFormFilterJobs($departments, "Ville", "item-filter-department");
-                    }
-                    if ($types && count($types) > 1) {
-                        $this->getFormFilterJobs($types, "Type de contrat", "item-filter-type");
-                    }
-                    */
-                    ?>
-                </div>
-            </div>
-        </form>
-        <div class="ast-container">
-        <?php if (is_array($jobs) && count($jobs) > 0) {
-        foreach ((array)$jobs as $job) {
-            $url = "/" . OMEVA_PAGE_POST_URL . "/" . sanitize_title($job->label . "__" . $job->uid) . "/";
-            ?>
-            <div class="animated slideInUp job-item ast-col-lg-4 ast-col-md-4 ast-col-sm-12 ast-col-xs-12"
-                 data-type="<?php echo $job->contract_type; ?>"
-                 data-department="<?php echo sanitize_title($job->department); ?>"
-                 data-category="<?php echo $job->categoryid; ?>">
-
-                <div class="job-inner">
-                    <div class="job-title">
-                        <h3><?php echo $job->label; ?></h3>
-                    </div>
-                    <div class="job-contract-type">
-                        <i class="ico-fiche"></i> <?php echo $job->contract_type__formated; ?>
-                    </div>
-                    <div class="job-location">
-                        <a href="<?php echo $url; ?>"><i class="ico-map"></i> <?php echo $job->city; ?></a>
-                    </div>
-                    <a class="job-block-clickable" href="<?php echo $url; ?>"></a>
-                </div>
-            </div>
-            <?php
-        }
-        ?>
-        </div>
-        <div>
-            <p class="has-text-align-center animated has-text-color has-medium-font-size fadeInDown"
-               style="color:#0c4f4d"><strong>Aucune offre ne correspond à votre profil ?</strong></p>
-            <div class="wp-block-buttons is-content-justification-center animated omeva-buttons-container fadeInUp">
-                <div class="wp-block-button omeva-police-first">
-                    <a class="wp-block-button__link has-text-color has-background"
-                       href="https://www.omeva.fr/candidature-spontanee/"
-                       style="border-radius:25px;background-color:#0c4f4d;color:#f3efe2">Candidature spontanée</a>
-                </div>
-            </div>
-        </div>
-    <?php } else {
-        ?>
-        <p class="has-text-align-center animated has-text-color has-medium-font-size fadeInDown" style="color:#0c4f4d">
-            <strong>Aucune offre disponible actuellement, n'hésitez pas à nous laisser votre candidature</strong></p>
-        <div class="wp-block-buttons is-content-justification-center animated omeva-buttons-container fadeInUp">
-            <div class="wp-block-button omeva-police-first">
-                <a class="wp-block-button__link has-text-color has-background"
-                   href="https://www.omeva.fr/candidature-spontanee/"
-                   style="border-radius:25px;background-color:#0c4f4d;color:#f3efe2">Candidature spontanée</a>
-            </div>
-        </div>
-        </div>
-        <?php
-    }
-    }
-
-    /**
-     * Get HTML template job listing
-     *
-     * @param Array $jobs
-     * @return void
-     */
-    public function getTemplateJobsNew($jobs, $types, $departments, $jobCategories)
+    public function getTemplateJobsNew($jobs, $jobCategories)
     {
         ?>
         <form class="job_filters">
@@ -416,7 +342,7 @@ class NicokaTemplate
     }
 
     /**
-     * Get HTML template job listing
+     * Get HTML template job teaser for home
      *
      * @param Array $jobs
      * @return void
@@ -456,204 +382,168 @@ class NicokaTemplate
         }
     }
 
-    
     /**
-     * Get HTML template job listing
+     * Get HTML template jobs teaser for unavailable job
+     *
+     * @param Array $jobs
+     * @return void
+     */
+    public function getTemplateTeaserJobsByCategory($jobs)
+    {
+        if (is_array($jobs) && count($jobs) > 0) {
+        ?>
+            <div class="jobs-teaser">
+                <h2 class="title animated slideInDown">Découvrez nos offres similaires</h2>
+                <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <?php foreach ((array)$jobs as $job) {
+                        $url = "/" . OMEVA_PAGE_POST_URL . "/" . sanitize_title($job->label . "__" . $job->uid) . "/";
+                        ?>
+                        <div class="animated slideInUp delay-200ms job-item swiper-slide">
+                            <div class="job-inner">
+                                <div class="job-title">
+                                    <h3><?php echo $job->label; ?></h3>
+                                </div>
+                                <div class="job-contract-type">
+                                    <i class="ico-fiche"></i> <?php echo $job->contract_type__formated; ?>
+                                </div>
+                                <div class="job-location">
+                                    <a href="<?php echo $url; ?>"><i class="ico-map"></i> <?php echo $job->city; ?></a>
+                                </div>
+                                <a class="job-block-clickable" href="<?php echo $url; ?>"></a>
+                            </div>
+                        </div>
+                    <?php } ?>
+                   </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="swiper-button-prev-unique">
+                <svg
+                class="swiper-button-prev-svg"
+                viewBox="137.718 -1.001 366.563 644">
+                <path
+                    d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z"></path>
+                </svg>
+            </div>
+            <div class="swiper-button-next-unique">
+                <svg class="swiper-button-next-svg" viewBox="0 0 238.003 238.003">
+                <path
+                    d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z"
+                ></path>
+                </svg>
+            </div>
+
+            <!-- Swiper JS -->
+            <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.swiper-button-next-unique',
+                    prevEl: '.swiper-button-prev-unique',
+                },
+                breakpoints: {
+                    // when window width is >= 500px
+                    500: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                    },
+                    // when window width is >= 700px
+                    700: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                    }
+                }
+                });
+            </script>
+                <?php
+                }
+        }
+
+    /**
+     * Get HTML template Omeva job teaser
      *
      * @param Array $jobs
      * @return void
      */
     public function getTemplateTeaserJobsOmeva($jobs)
     {
-
         if (is_array($jobs) && count($jobs) > 0) {
             ?>
-
         <div class="jobs-teaser">
-            
             <h2 class="title animated slideInDown">Rejoignez notre équipe</h2>
-
             <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <?php foreach ((array)$jobs as $job) {
-                    $url = "/" . OMEVA_PAGE_POST_URL . "/" . sanitize_title($job->label . "__" . $job->uid) . "/";
-                    ?>
-                    <div class="animated slideInUp delay-200ms job-item swiper-slide">
-                        <div class="job-inner">
-                            <div class="job-title">
-                                <h3><?php echo $job->label; ?></h3>
+                <div class="swiper-wrapper">
+                    <?php foreach ((array)$jobs as $job) {
+                        $url = "/" . OMEVA_PAGE_POST_URL . "/" . sanitize_title($job->label . "__" . $job->uid) . "/";
+                        ?>
+                        <div class="animated slideInUp delay-200ms job-item swiper-slide">
+                            <div class="job-inner">
+                                <div class="job-title">
+                                    <h3><?php echo $job->label; ?></h3>
+                                </div>
+                                <div class="job-contract-type">
+                                    <i class="ico-fiche"></i> <?php echo $job->contract_type__formated; ?>
+                                </div>
+                                <div class="job-location">
+                                    <a href="<?php echo $url; ?>"><i class="ico-map"></i> <?php echo $job->city; ?></a>
+                                </div>
+                                <a class="job-block-clickable" href="<?php echo $url; ?>"></a>
                             </div>
-                            <div class="job-contract-type">
-                                <i class="ico-fiche"></i> <?php echo $job->contract_type__formated; ?>
-                            </div>
-                            <div class="job-location">
-                                <a href="<?php echo $url; ?>"><i class="ico-map"></i> <?php echo $job->city; ?></a>
-                            </div>
-                            <a class="job-block-clickable" href="<?php echo $url; ?>"></a>
                         </div>
-                    </div>
-                    <?php
-                }
-                echo '</div>';
-                ?>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <div class="swiper-button-prev-unique">
-                    <svg
-                    class="swiper-button-prev-svg"
-                    viewBox="137.718 -1.001 366.563 644">
-                    <path
-                        d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z"></path>
-                    </svg>
-                </div>
-                <div class="swiper-button-next-unique">
-                    <svg class="swiper-button-next-svg" viewBox="0 0 238.003 238.003">
-                    <path
-                        d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z"
-                    ></path>
-                    </svg>
-                </div>
-
-                <!--
-                <div class="swiper mySwiper2">
-                    <div class="swiper-wrapper">
-                    <div class="swiper-slide job-item">
-                        <div class="job-inner">
-                            <div class="job-title">
-                                <h3><?php echo "LABEL 1" ?></h3>
-                            </div>
-                            <div class="job-contract-type">
-                                <i class="ico-fiche"></i> <?php echo "Contract" ?>
-                            </div>
-                            <div class="job-location">
-                                <a href="<?php echo "#" ?>"><i class="ico-map"></i> <?php echo "Ville" ?></a>
-                            </div>
-                            <a class="job-block-clickable" href="<?php echo "#" ?>"></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide job-item">
-                        <div class="job-inner">
-                            <div class="job-title">
-                                <h3><?php echo "LABEL 2" ?></h3>
-                            </div>
-                            <div class="job-contract-type">
-                                <i class="ico-fiche"></i> <?php echo "Contract" ?>
-                            </div>
-                            <div class="job-location">
-                                <a href="<?php echo "#" ?>"><i class="ico-map"></i> <?php echo "Ville" ?></a>
-                            </div>
-                            <a class="job-block-clickable" href="<?php echo "#" ?>"></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide job-item">
-                        <div class="job-inner">
-                            <div class="job-title">
-                                <h3><?php echo "LABEL 3" ?></h3>
-                            </div>
-                            <div class="job-contract-type">
-                                <i class="ico-fiche"></i> <?php echo "Contract" ?>
-                            </div>
-                            <div class="job-location">
-                                <a href="<?php echo "#" ?>"><i class="ico-map"></i> <?php echo "Ville" ?></a>
-                            </div>
-                            <a class="job-block-clickable" href="<?php echo "#" ?>"></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide job-item">
-                        <div class="job-inner">
-                            <div class="job-title">
-                                <h3><?php echo "LABEL 4" ?></h3>
-                            </div>
-                            <div class="job-contract-type">
-                                <i class="ico-fiche"></i> <?php echo "Contract" ?>
-                            </div>
-                            <div class="job-location">
-                                <a href="<?php echo "#" ?>"><i class="ico-map"></i> <?php echo "Ville" ?></a>
-                            </div>
-                            <a class="job-block-clickable" href="<?php echo "#" ?>"></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide job-item">
-                        <div class="job-inner">
-                            <div class="job-title">
-                                <h3><?php echo "LABEL 5" ?></h3>
-                            </div>
-                            <div class="job-contract-type">
-                                <i class="ico-fiche"></i> <?php echo "Contract" ?>
-                            </div>
-                            <div class="job-location">
-                                <a href="<?php echo "#" ?>"><i class="ico-map"></i> <?php echo "Ville" ?></a>
-                            </div>
-                            <a class="job-block-clickable" href="<?php echo "#" ?>"></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide job-item">
-                        <div class="job-inner">
-                            <div class="job-title">
-                                <h3><?php echo "LABEL 6" ?></h3>
-                            </div>
-                            <div class="job-contract-type">
-                                <i class="ico-fiche"></i> <?php echo "Contract" ?>
-                            </div>
-                            <div class="job-location">
-                                <a href="<?php echo "#" ?>"><i class="ico-map"></i> <?php echo "Ville" ?></a>
-                            </div>
-                            <a class="job-block-clickable" href="<?php echo "#" ?>"></a>
-                        </div>
-                    </div>
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <div class="swiper-button-prev-unique">
-                    <svg
-                    class="swiper-button-prev-svg"
-                    viewBox="137.718 -1.001 366.563 644">
-                    <path
-                        d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z"></path>
-                    </svg>
-                </div>
-                <div class="swiper-button-next-unique">
-                    <svg class="swiper-button-next-svg" viewBox="0 0 238.003 238.003">
-                    <path
-                        d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z"
-                    ></path>
-                    </svg>
-                </div>
-                -->
-
-                <!-- Swiper JS -->
-                <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-                <!-- Initialize Swiper -->
-                <script>
-                    var swiper = new Swiper(".mySwiper", {
-                    loop: true,
-                    slidesPerView: 1,
-                    spaceBetween: 30,
-                    navigation: {
-                        nextEl: '.swiper-button-next-unique',
-                        prevEl: '.swiper-button-prev-unique',
-                    },
-                    breakpoints: {
-                        // when window width is >= 500px
-                        500: {
-                        slidesPerView: 2,
-                        spaceBetween: 20
-                        },
-                        // when window width is >= 700px
-                        700: {
-                        slidesPerView: 3,
-                        spaceBetween: 30
-                        }
-                    }
-                    });
-                </script>
-
+                    <?php } ?>
+                   </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="swiper-button-prev-unique">
+                <svg
+                class="swiper-button-prev-svg"
+                viewBox="137.718 -1.001 366.563 644">
+                <path
+                    d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z"></path>
+                </svg>
+            </div>
+            <div class="swiper-button-next-unique">
+                <svg class="swiper-button-next-svg" viewBox="0 0 238.003 238.003">
+                <path
+                    d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z"
+                ></path>
+                </svg>
             </div>
 
+            <!-- Swiper JS -->
+            <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-            <?php
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.swiper-button-next-unique',
+                    prevEl: '.swiper-button-prev-unique',
+                },
+                breakpoints: {
+                    // when window width is >= 500px
+                    500: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                    },
+                    // when window width is >= 700px
+                    700: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                    }
+                }
+                });
+            </script>
+        </div>
+    <?php
         }
     }
 

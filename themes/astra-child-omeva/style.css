@@ -646,6 +646,7 @@ a:focus{
 
 .omeva-buttons-container{
     padding-bottom: 70px;
+    text-align: center;
 }
 
 .omeva-buttons-container a{
@@ -831,7 +832,7 @@ a:focus{
     bottom: 0;
     width: 300px;
     height: 150px;
-    padding-top: 70px;
+    padding: 70px 15px 0 !important;
 }
 
 .omeva-contact-link .omeva-team-front .wp-block-media-text__content{
@@ -901,6 +902,7 @@ a:focus{
 
     .omeva-team-front img{
         height: 350px;
+        max-width: none !important;
     }
 
     .omeva-team-container .omeva-team-card{

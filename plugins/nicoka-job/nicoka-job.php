@@ -95,8 +95,6 @@ class NicokaJob
 		if (!is_admin()) {
 			add_action('init', array($this, 'add_rewrite_rules'));
 
-			//Listing of Jobs with filters
-			add_shortcode('nicoka-jobs-listing', array($this, 'outputJobsListing'));
             //Listing of Jobs with filters
 			add_shortcode('nicoka-jobs-listing-new', array($this, 'outputJobsListingNew'));
 			//Job page with the form 
@@ -188,7 +186,6 @@ class NicokaJob
         ?>
         <script>
             var data = <?php echo json_encode($type); ?>;
-            console.log(data);
         </script>
         <?php
 
@@ -196,19 +193,19 @@ class NicokaJob
 			case 'listJobs':
                 wp_register_script('nicoka_job', NICOKA_JOB_PLUGIN_URL . '/assets/js/list_jobs.js', array('jquery'));
                 wp_enqueue_script('nicoka_job');
-                wp_register_style('nicoka_css_job', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
-				wp_enqueue_style('nicoka_css_job');
+                wp_register_style('nicoka_css_list_jobs', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
+				wp_enqueue_style('nicoka_css_list_jobs');
 				break;
 			case 'teaserJobs':
-				wp_register_style('nicoka_css_job', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
+				wp_register_style('nicoka_css_list_jobs', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
 				wp_register_style('nicoka_css_job_teaser', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_teaser_job.css');
-				wp_enqueue_style('nicoka_css_job');
+				wp_enqueue_style('nicoka_css_list_jobs');
 				wp_enqueue_style('nicoka_css_job_teaser');
 				break;
             case 'teaserJobsOmeva':
-                wp_register_style('nicoka_css_job', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
+                wp_register_style('nicoka_css_list_jobs', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_list_jobs.css');
                 wp_register_style('nicoka_css_job_teaser_omeva', NICOKA_JOB_PLUGIN_URL . '/assets/css/style_teaser_job_omeva.css');
-                wp_enqueue_style('nicoka_css_job');
+                wp_enqueue_style('nicoka_css_list_jobs');
                 wp_enqueue_style('nicoka_css_job_teaser_omeva');
                 wp_register_style('swiper_css', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css');
                 wp_enqueue_style('swiper_css');
@@ -229,51 +226,6 @@ class NicokaJob
                 break;
 		}
 	}
-
-	/**
-	 * Output Listing Job
-	 *
-	 * @param Array $opt
-	 * @return string
-	 */
-	public function outputJobsListing($opt)
-	{
-		global $post;
-		$rest = NicokaRest::instance();
-
-		$order = (isset($opt['order'])) ? $opt['order'] :  null;
-        $jobCategoriesList = $rest->getNicokaJobCategories();
-        $jobs = $rest->getNicokaJobs(null, $order, '400');
-        $types = [];
-        $departments = [];
-        $jobCategories = [];
-
-        foreach($jobs as $job){
-            if (!array_search($job->contract_type, $types)){
-                $types[$job->contrat_type] = $job->contract_type__formated;
-            }
-
-            if (!array_search($job->city, $departments)){
-                $departments[$job->city] = $job->city;
-            }
-
-            if (array_key_exists($job->categoryid, $jobCategoriesList)){
-                $jobCategories[$job->categoryid] = $jobCategoriesList[$job->categoryid];
-            }
-        }
-
-		if (intval($opt['limit']) > 0){
-            $jobs = array_slice($jobs, 0, intval($opt['limit']));
-        }
-
-		ob_start();
-
-        $this->add_css('listJobs');
-
-        echo NicokaTemplate::instance()->getTemplateJobs($jobs, $types, $departments, $jobCategories);
-        return '<div class="jobs-listing">' . ob_get_clean() . '</div>';
-	}
-
     
 	/**
 	 * Output Listing Job
@@ -289,8 +241,6 @@ class NicokaJob
 		$order = (isset($opt['order'])) ? $opt['order'] :  null;
         $jobCategoriesList = $rest->getNicokaJobCategories();
         $jobs = $rest->getNicokaJobs(null, $order, '400');
-        $types = [];
-        $departments = [];
         $jobCategories = [];
 
         foreach($jobs as $job){
@@ -307,7 +257,7 @@ class NicokaJob
 
         $this->add_css('listJobs');
 
-        echo NicokaTemplate::instance()->getTemplateJobsNew($jobs, $types, $departments, $jobCategories);
+        echo NicokaTemplate::instance()->getTemplateJobsNew($jobs, $jobCategories);
         return '<div class="jobs-listing">' . ob_get_clean() . '</div>';
 	}
 
@@ -350,6 +300,26 @@ class NicokaJob
         echo NicokaTemplate::instance()->getTemplateTeaserJobsOmeva($jobs);
         return '<div class="jobs-listing animated fadeIn">' . ob_get_clean() . '</div>';
 	}
+
+    /**
+     * Output Teaser jobs
+     *
+     * @param Array $opt
+     * @return string
+     */
+    public function outputJobsTeaserByCategory($categoryId)
+    {
+        global $post;
+        $rest = NicokaRest::instance();
+
+        $jobs = $rest->getNicokaJobs(['categoryid' => $categoryId],null,null);
+
+        ob_start();
+
+        $this->add_css('teaserJobsOmeva');
+        echo NicokaTemplate::instance()->getTemplateTeaserJobsByCategory($jobs);
+        return '<div class="jobs-listing animated fadeIn">' . ob_get_clean() . '</div>';
+    }
 
 	/**
 	 * Get List of Events 
@@ -829,10 +799,16 @@ class NicokaJob
 
         ob_start();
 
-        $this->add_css('job');
-        $template = NicokaTemplate::instance()->getTemplateJob($this->job);
-        $template .= $this->jobForm($this->job->jobid);
-        $template .= NicokaTemplate::instance()->getTemplateJobContact($this->job);
+        if($this->job->status == 1 || $this->job->status == 2){
+            $this->add_css('job');
+            $template = NicokaTemplate::instance()->getTemplateJob($this->job);
+            $template .= $this->jobForm($this->job->jobid);
+            $template .= NicokaTemplate::instance()->getTemplateJobContact($this->job);
+        }else{
+            $template = NicokaTemplate::instance()->getTemplateUnavailableJob($this->job);
+            $template .= $this->outputJobsTeaserByCategory($this->job->categoryid);
+        }
+
         echo $template;
 
         return '<div class="job-page">' . ob_get_clean(). '</div>';
